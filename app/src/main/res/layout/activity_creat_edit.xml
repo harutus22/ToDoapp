@@ -1,0 +1,213 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".activity.CreatEdit">
+
+    <Button
+        android:id="@+id/save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Save"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:layout_marginEnd="10dp"
+        android:layout_marginTop="10dp"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/titleWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/title_view"
+        android:layout_marginEnd="10dp"
+        android:layout_marginStart="10dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/titleEdit"
+            android:maxLines="1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:inputType="text"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/title_view"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textSize="20dp"
+        android:text="Title"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/save"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="10dp" />
+
+    <TextView
+        android:id="@+id/descriptionView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Description"
+        android:textSize="20dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/titleWrapper"
+        android:maxLines="1"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/descriptionWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/descriptionView"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+        <android.support.design.widget.TextInputEditText
+            android:id="@+id/descriptionEdit"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:maxLines="3"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/editTimeWrapper"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/dateView"
+        android:inputType="datetime"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp">
+
+    <android.support.design.widget.TextInputEditText
+        android:id="@+id/editTime"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:focusableInTouchMode="false"/>
+</android.support.design.widget.TextInputLayout>
+
+    <TextView
+        android:id="@+id/dateView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Date and Time"
+        app:layout_constraintTop_toBottomOf="@id/descriptionWrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="10dp"
+        android:textSize="20dp" />
+
+    <CheckBox
+        android:id="@+id/repeatView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Repeat"
+        app:layout_constraintTop_toBottomOf="@id/editTimeWrapper"
+        app:layout_constraintStart_toStartOf="parent"
+        android:checked="false"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp" />
+
+    <TextView
+        android:id="@+id/priorityView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:text="Priority"
+        android:textSize="20dp"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/repeatViewGroup"
+        tools:layout_editor_absoluteY="441dp" />
+
+    <RadioGroup
+        android:id="@+id/repeatViewGroup"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/repeatView"
+        android:buttonTint="@color/Black"
+        android:layout_marginStart="25dp">
+
+        <RadioButton
+            android:id="@+id/dailyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Daily" />
+
+        <RadioButton
+            android:id="@+id/weeklyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Weekly" />
+
+        <RadioButton
+            android:id="@+id/monthlyBtn"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Monthly" />
+    </RadioGroup>
+
+    <RadioGroup
+        android:id="@+id/priorityGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/priorityView"
+        android:orientation="horizontal">
+
+    <RadioButton
+        android:id="@+id/priorityLow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/Blue"
+        android:buttonTint="@color/Black"
+        android:text="Low" />
+
+    <RadioButton
+        android:id="@+id/priorityMinor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/Light_Blue"
+        android:buttonTint="@color/Black"
+        android:text="Minor" />
+
+    <RadioButton
+        android:id="@+id/prorityNormal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/Green"
+        android:buttonTint="@color/Black"
+        android:text="Normal" />
+
+    <RadioButton
+        android:id="@+id/priorityMajor"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:background="@color/Orange"
+        android:buttonTint="@color/Black"
+        android:text="Major" />
+
+        <RadioButton
+            android:id="@+id/priorityHigh"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@color/Red"
+            android:buttonTint="@color/Black"
+            android:text="High" />
+
+    </RadioGroup>
+
+</android.support.constraint.ConstraintLayout>
