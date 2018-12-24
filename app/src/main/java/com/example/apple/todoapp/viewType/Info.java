@@ -3,17 +3,14 @@ package com.example.apple.todoapp.viewType;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Random;
+
 public class Info implements Parcelable {
     private String title, description, date, priority;
+    private Random randomizer = new Random();
+    private String id = String.valueOf(randomizer.nextInt());
 
     public Info(){
-    }
-
-    public Info (String title, String description, String date, String prioity){
-        this.title = title;
-        this.description = description;
-        this.date = date;
-        this.priority = prioity;
     }
 
     protected Info(Parcel in) {
@@ -21,6 +18,7 @@ public class Info implements Parcelable {
         description = in.readString();
         date = in.readString();
         priority = in.readString();
+        id = in.readString();
     }
 
     public static final Creator<Info> CREATOR = new Creator<Info>() {
@@ -67,6 +65,10 @@ public class Info implements Parcelable {
         this.priority = priority;
     }
 
+    public String getId() { return id; }
+
+    public void setId(String id) { this.id = id; }
+
     @Override
     public int describeContents() {
         return 0;
@@ -78,5 +80,6 @@ public class Info implements Parcelable {
         dest.writeString(description);
         dest.writeString(date);
         dest.writeString(priority);
+        dest.writeString(id);
     }
 }

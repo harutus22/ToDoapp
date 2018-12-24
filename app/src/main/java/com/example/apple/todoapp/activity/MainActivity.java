@@ -46,14 +46,15 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setAdapter(cardViewAdapter);
     }
 
-
-
     public void add(){
         Intent intent = new Intent(this, CreatEdit.class);
         startActivityForResult(intent, REQUEST_ADDITEM);
     }
-    public void edit(Info info){
 
+    public void edit(Info info){
+        Intent edit = new Intent(this, CreatEdit.class);
+        edit.putExtra(CreatEdit.KEY ,info);
+        startActivityForResult(edit, REQUEST_EDIT);
     }
 
 
@@ -65,10 +66,14 @@ public class MainActivity extends AppCompatActivity {
                     Info info = data.getParcelableExtra(CreatEdit.KEY);
                     cardViewAdapter.addData(info);
                 }
+                break;
+            case REQUEST_EDIT:
+                if(resultCode == RESULT_OK){
+                    Info info = data.getParcelableExtra((CreatEdit.KEY));
+                    cardViewAdapter.updateData(info);
+                }
+                break;
         }
-
         super.onActivityResult(requestCode, resultCode, data);
     }
-
-
 }

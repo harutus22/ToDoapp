@@ -4,7 +4,6 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
-import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.apple.todoapp.adapters.cardViewHolder.ToDoHolder;
@@ -13,18 +12,29 @@ import com.example.apple.todoapp.R;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     private List<Info> data = new ArrayList<>();
     private OnItemSelectedListener onItemSelected;
-    private int index = -1;
+
+    private ToDoHolder.OnItemClickListener OnItemClickListener =
+            new ToDoHolder.OnItemClickListener() {
+                @Override
+                public void onItemClick(int adapterPosition) {
+                    if (onItemSelected != null) {
+                        onItemSelected.onItemSelected(data.get(adapterPosition));
+                    }
+                }
+            };
 
     @NonNull
     @Override
     public ToDoHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
-        View view = LayoutInflater.from(viewGroup.getContext()).inflate(R.layout.cardviewlayout,
-                viewGroup,false);
-        return new ToDoHolder(view);
+        ToDoHolder toDoHolder = new ToDoHolder(LayoutInflater.from(viewGroup.getContext())
+                .inflate(R.layout.cardviewlayout, viewGroup, false));
+        toDoHolder.setOnItemClickListener(OnItemClickListener);
+        return toDoHolder;
     }
 
     @Override
@@ -65,4 +75,13 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
         notifyItemInserted(data.size() - 1);
     }
 
+    public void updateData(Info item){
+        for(int i = 0; i < data.size(); ++i) {
+            if (Objects.equals(item.getId(), data.get(i).getId())){
+                data.set(i, item);
+                notifyItemChanged(i);
+                break;
+            }
+        }
+    }
 }

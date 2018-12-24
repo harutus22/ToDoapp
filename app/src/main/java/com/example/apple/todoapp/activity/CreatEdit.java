@@ -34,8 +34,6 @@ public class CreatEdit extends AppCompatActivity {
     private TimePickerDialog time;
     private DatePickerDialog date;
     public static final String KEY = "todo";
-    public static final String ADD_ITEM = "Add";
-    public static final String EDIT_ITEM = "Edit";
     private int priorityBtnSelect;
     private CheckBox repeat;
     private TextInputEditText title;
@@ -53,7 +51,6 @@ public class CreatEdit extends AppCompatActivity {
 
         title = findViewById(R.id.titleEdit);
         description = findViewById(R.id.descriptionEdit);
-
         dateTime = findViewById(R.id.editTime);
         dateTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -90,17 +87,20 @@ public class CreatEdit extends AppCompatActivity {
                 }
             }
         });
-        save();
+        Info info = new Info();
+        if(getIntent().hasExtra(KEY)){
+            info.setId(arrivedData());
+        }
+        save(info);
     }
 
-    public void save(){
+    public void save(final Info info){
         Button save = findViewById(R.id.save);
         save.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(check()) {
                     Intent intent = new Intent();
-                    Info info = new Info();
                     info.setTitle(title.getText().toString());
                     info.setDescription(description.getText().toString());
                     info.setDate(dateTime.getText().toString());
@@ -111,7 +111,6 @@ public class CreatEdit extends AppCompatActivity {
                 }
             }
         });
-
     }
 
     private boolean check(){
@@ -204,5 +203,14 @@ public class CreatEdit extends AppCompatActivity {
             }
         });
         date.show();
+    }
+
+    public String arrivedData(){
+            Info info = getIntent().getParcelableExtra(KEY);
+            title.setText(info.getTitle());
+            description.setText(info.getDescription());
+            dateTime.setText(info.getDate());
+            String k = info.getId();
+            return k;
     }
 }
