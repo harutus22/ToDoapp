@@ -56,6 +56,14 @@ public class FragmentView extends Fragment {
         title = view.findViewById(R.id.titleEdit);
         description = view.findViewById(R.id.descriptionEdit);
         dateTime = view.findViewById(R.id.editTime);
+        Info info = new Info();
+        if(getArguments() != null){
+            info.setId(arrivedData());
+            s = "edit";
+        }
+        else{
+            s = "add";
+        }
         dateTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -85,11 +93,6 @@ public class FragmentView extends Fragment {
                 }
             }
         });
-        Info info = new Info();
-        if(getArguments() != null){
-            info.setId(arrivedData());
-            s = "edit";
-        }
         save(info);
     }
 

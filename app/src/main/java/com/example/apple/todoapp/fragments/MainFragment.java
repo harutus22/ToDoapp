@@ -28,7 +28,6 @@ public class MainFragment extends Fragment {
     public static final String ARG_PARAM = "param1";
     public static final String ARG_STRING = "string";
     private static MainFragment fragment = new MainFragment();
-    public static FragmentView fragmentView = new FragmentView();
     CardViewAdapter cardViewAdapter = new CardViewAdapter();
 
     public MainFragment() {
@@ -81,13 +80,12 @@ public class MainFragment extends Fragment {
     public void add(){
         FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
         fragmentManager.replace(R.id.placeHolder, new FragmentView());
-        fragmentManager.addToBackStack(null);
         fragmentManager.commit();
     }
 
     public void edit(Info info){
         FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
-        fragmentView = FragmentView.newInstance(info);
+        FragmentView fragmentView = FragmentView.newInstance(info);
         fragmentManager.replace(R.id.placeHolder, fragmentView);
         fragmentManager.commit();
     }
