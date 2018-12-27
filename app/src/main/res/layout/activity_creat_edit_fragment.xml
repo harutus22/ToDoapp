@@ -129,12 +129,13 @@
 
     <RadioGroup
         android:id="@+id/repeatViewGroup"
-        android:layout_width="0dp"
-        android:layout_height="0dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/repeatView"
         android:buttonTint="@color/Black"
-        android:layout_marginStart="25dp">
+        android:layout_marginStart="25dp"
+        android:visibility="gone">
 
         <RadioButton
             android:id="@+id/dailyBtn"

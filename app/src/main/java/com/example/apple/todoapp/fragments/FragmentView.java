@@ -52,7 +52,7 @@ public class FragmentView extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         title = view.findViewById(R.id.titleEdit);
         description = view.findViewById(R.id.descriptionEdit);
         dateTime = view.findViewById(R.id.editTime);
@@ -74,18 +74,13 @@ public class FragmentView extends Fragment {
         repeat.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                RadioGroup layout = v.findViewById(R.id.repeatViewGroup);
-                ViewGroup.LayoutParams layoutParams = layout.getLayoutParams();
-                if(((CheckBox)v).isChecked()){
-                    layoutParams.height = ViewGroup.LayoutParams.WRAP_CONTENT;
-                    layoutParams.width = ViewGroup.LayoutParams.WRAP_CONTENT;
-                    layout.setLayoutParams(layoutParams);
+                RadioGroup layout = view.findViewById(R.id.repeatViewGroup);
+                if((repeat).isChecked()){
+                    layout.setVisibility(View.VISIBLE);
                     radioBtnSelect = layout.getCheckedRadioButtonId();
                 }
                 else {
-                    layoutParams.height = 0;
-                    layoutParams.width = 0;
-                    layout.setLayoutParams(layoutParams);
+                    layout.setVisibility(View.GONE);
                     layout.clearCheck();
                 }
             }

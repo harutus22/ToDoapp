@@ -83,8 +83,6 @@ public class MainFragment extends Fragment {
         fragmentManager.replace(R.id.placeHolder, new FragmentView());
         fragmentManager.addToBackStack(null);
         fragmentManager.commit();
-//        Intent intent = new Intent(this, CreatEdit.class);
-//        startActivityForResult(intent, REQUEST_ADDITEM);
     }
 
     public void edit(Info info){
@@ -92,29 +90,5 @@ public class MainFragment extends Fragment {
         fragmentView = FragmentView.newInstance(info);
         fragmentManager.replace(R.id.placeHolder, fragmentView);
         fragmentManager.commit();
-
-//        Intent edit = new Intent(this, CreatEdit.class);
-//        edit.putExtra(CreatEdit.KEY ,info);
-//        startActivityForResult(edit, REQUEST_EDIT);
     }
-
-
-//    @Override
-//    public void onActivityResult(int requestCode, int resultCode, @Nullable Intent data) {
-//        switch (requestCode){
-//            case REQUEST_ADDITEM:
-//                if(resultCode == RESULT_OK) {
-//                    Info info = data.getParcelableExtra(CreatEdit.KEY);
-//                    cardViewAdapter.addData(info);
-//                }
-//                break;
-//                case REQUEST_EDIT:
-//                    if(resultCode == RESULT_OK){
-//                        Info info = data.getParcelableExtra((CreatEdit.KEY));
-//                        cardViewAdapter.updateData(info);
-//                    }
-//                    break;
-//            }
-//            super.onActivityResult(requestCode, resultCode, data);
-//        }
 }
