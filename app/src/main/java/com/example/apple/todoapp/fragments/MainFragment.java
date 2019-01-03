@@ -1,5 +1,6 @@
 package com.example.apple.todoapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -13,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.apple.todoapp.R;
+import com.example.apple.todoapp.activity.MainActivity;
 import com.example.apple.todoapp.adapters.CardViewAdapter;
 import com.example.apple.todoapp.viewType.Info;
 
@@ -21,14 +23,19 @@ public class MainFragment extends Fragment {
     private CardViewAdapter.OnItemSelectedListener OnItemSelectedListener = new CardViewAdapter.OnItemSelectedListener() {
         @Override
         public void onItemSelected(Info info) {
-            edit(info);
+            if(MainActivity.status) {
+                edit(info);
+            }
         }
     };
 
     public static final String ARG_PARAM = "param1";
     public static final String ARG_STRING = "string";
-    private static MainFragment fragment = new MainFragment();
-    CardViewAdapter cardViewAdapter = new CardViewAdapter();
+    public static MainFragment fragment = new MainFragment();
+    public RecyclerView recyclerView;
+    private CardViewAdapter cardViewAdapter = new CardViewAdapter();
+    @SuppressLint("StaticFieldLeak")
+    public static FloatingActionButton add;
 
     public MainFragment() {
     }
@@ -42,23 +49,20 @@ public class MainFragment extends Fragment {
     }
 
     @Override
-    public void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-    }
-
-    @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.activity_main_fragment, container, false);
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         cardViewAdapter.setOnItemSelectedListener(OnItemSelectedListener);
-        RecyclerView recyclerView = view.findViewById(R.id.toDoInfo);
+        recyclerView = view.findViewById(R.id.toDoInfo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);
         recyclerView.setAdapter(cardViewAdapter);
-        FloatingActionButton add = view.findViewById(R.id.addBtn);
+        recyclerView.setEnabled(false);
+        add = view.findViewById(R.id.addBtn);
         add.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
@@ -66,6 +70,12 @@ public class MainFragment extends Fragment {
                 }
             });
         if (getArguments() != null) {
+            if(!MainActivity.status) {
+                add.setVisibility(View.VISIBLE);
+            }
+            else if(MainActivity.status) {
+                add.setVisibility(View.INVISIBLE);
+            }
             Info info = getArguments().getParcelable(ARG_PARAM);
             String s = getArguments().getString(ARG_STRING);
             switch (s){

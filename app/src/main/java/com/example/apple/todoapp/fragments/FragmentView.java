@@ -1,5 +1,6 @@
 package com.example.apple.todoapp.fragments;
 
+import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
@@ -22,6 +23,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.apple.todoapp.R;
+import com.example.apple.todoapp.activity.MainActivity;
 import com.example.apple.todoapp.viewType.Info;
 import java.util.Calendar;
 
@@ -51,8 +53,11 @@ public class FragmentView extends Fragment {
         return view;
     }
 
+    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
+        MainActivity.item.setVisible(false);
+        MainFragment.add.setVisibility(View.INVISIBLE);
         title = view.findViewById(R.id.titleEdit);
         description = view.findViewById(R.id.descriptionEdit);
         dateTime = view.findViewById(R.id.editTime);
@@ -152,7 +157,9 @@ public class FragmentView extends Fragment {
                     mainFragment = MainFragment.newInstance(info, s);
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.placeHolder, mainFragment);
+                    MainActivity.item.setVisible(true);
                     fragmentTransaction.commit();
+
                 }
             }
         });
