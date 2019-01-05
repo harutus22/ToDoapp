@@ -40,7 +40,7 @@ public class FragmentView extends Fragment {
     private String priorityBtnText;
     private int radioBtnSelect;
     private static String ARG_BUNDLE = "KEY";
-    private static String s = "add";
+    private static String s = "addBtn";
     private static MainFragment mainFragment;
 
     public FragmentView(){
@@ -56,8 +56,8 @@ public class FragmentView extends Fragment {
     @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
-        MainActivity.item.setVisible(false);
-        MainFragment.add.setVisibility(View.INVISIBLE);
+        MainFragment.item.setVisible(false);
+        MainFragment.addBtn.setVisibility(View.INVISIBLE);
         title = view.findViewById(R.id.titleEdit);
         description = view.findViewById(R.id.descriptionEdit);
         dateTime = view.findViewById(R.id.editTime);
@@ -67,7 +67,7 @@ public class FragmentView extends Fragment {
             s = "edit";
         }
         else{
-            s = "add";
+            s = "addBtn";
         }
         dateTime.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -157,9 +157,8 @@ public class FragmentView extends Fragment {
                     mainFragment = MainFragment.newInstance(info, s);
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.placeHolder, mainFragment);
-                    MainActivity.item.setVisible(true);
+                    MainFragment.item.setVisible(true);
                     fragmentTransaction.commit();
-
                 }
             }
         });

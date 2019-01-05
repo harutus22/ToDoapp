@@ -3,6 +3,7 @@ package com.example.apple.todoapp.adapters.cardViewHolder;
 import android.support.v7.widget.RecyclerView;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.example.apple.todoapp.R;
@@ -12,6 +13,7 @@ public class ToDoHolder extends RecyclerView.ViewHolder {
     private TextView title, description, date;
     private View priority;
     private OnItemClickListener OnItemClickListener;
+    private AdapterView.OnItemLongClickListener onItemLongClickListener;
 
     public TextView getTitle() {
         return title;

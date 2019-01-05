@@ -4,8 +4,35 @@
     tools:context="com.example.apple.todoapp.activity_main_fragment">
     <item
         android:id="@+id/menu_edit"
-        android:orderInCategory="100"
+        android:orderInCategory="1"
         android:icon="@drawable/ic_pencil"
         android:title="@string/edit"
-        app:showAsAction="ifRoom" />
+        app:showAsAction="always" />
+
+    <item
+        android:id="@+id/delete"
+        android:icon="@drawable/ic_remove"
+        android:title="@string/Delete"
+        android:orderInCategory="2"
+        app:showAsAction="always"/>
+
+    <item
+        android:id="@+id/menu_sort"
+        android:title="@string/sort"
+        app:showAsAction="always"
+        android:icon="@drawable/ic_sort">
+        <menu>
+            <item
+                android:id="@+id/sort_Title"
+                android:title="@string/sort_title" />
+            <item
+                android:id="@+id/sort_Date"
+                android:title="@string/sort_date" />
+            <item
+                android:id="@+id/sort_Priority"
+                android:title="@string/sort_priority" />
+        </menu>
+    </item>
+
 </menu>
+

@@ -3,6 +3,7 @@ package com.example.apple.todoapp.viewType;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import java.util.Comparator;
 import java.util.Random;
 
 public class Info implements Parcelable {
@@ -82,4 +83,25 @@ public class Info implements Parcelable {
         dest.writeString(priority);
         dest.writeString(id);
     }
+
+    public static final Comparator<Info> sortByTitle = new Comparator<Info>() {
+        @Override
+        public int compare(Info o1, Info o2) {
+            return o1.title.compareTo(o2.title);
+        }
+    };
+
+    public static final Comparator<Info> sortByDate = new Comparator<Info>() {
+        @Override
+        public int compare(Info o1, Info o2) {
+            return o1.date.compareTo(o2.date);
+        }
+    };
+
+    public static final Comparator<Info> sortByPriority = new Comparator<Info>() {
+        @Override
+        public int compare(Info o1, Info o2) {
+            return o1.priority.compareTo(o2.priority);
+        }
+    };
 }
