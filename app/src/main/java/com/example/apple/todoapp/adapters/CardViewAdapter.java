@@ -70,6 +70,14 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
         return data.size();
     }
 
+    public List<Info> getData() {
+        return data;
+    }
+
+    public void setData(List<Info> data) {
+        this.data = data;
+    }
+
     public void addData(Info item){
         data.add(item);
         notifyItemInserted(data.size() - 1);

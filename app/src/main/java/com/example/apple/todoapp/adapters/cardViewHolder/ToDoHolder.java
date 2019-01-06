@@ -13,7 +13,6 @@ public class ToDoHolder extends RecyclerView.ViewHolder {
     private TextView title, description, date;
     private View priority;
     private OnItemClickListener OnItemClickListener;
-    private AdapterView.OnItemLongClickListener onItemLongClickListener;
 
     public TextView getTitle() {
         return title;

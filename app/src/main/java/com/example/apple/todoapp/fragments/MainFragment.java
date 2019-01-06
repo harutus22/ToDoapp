@@ -17,9 +17,12 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.apple.todoapp.R;
-import com.example.apple.todoapp.activity.MainActivity;
+import com.example.apple.todoapp.Tools.SortingTool;
 import com.example.apple.todoapp.adapters.CardViewAdapter;
 import com.example.apple.todoapp.viewType.Info;
+
+import java.util.ArrayList;
+import java.util.List;
 
 public class MainFragment extends Fragment {
 
@@ -34,14 +37,19 @@ public class MainFragment extends Fragment {
 
     public static final String ARG_PARAM = "param1";
     public static final String ARG_STRING = "string";
+    public static final String BY_TITLE = "byTitle";
+    public static final String BY_DATE = "byDate";
+    public static final String BY_PRIORITY = "byPriority";
+    public static final String MENU_TITLE_EDIT = "edit";
+    public static final String MENU_TITLE_ACCEPT = "accept";
     @SuppressLint("StaticFieldLeak")
     public static MainFragment fragment = new MainFragment();
     public RecyclerView recyclerView;
     private CardViewAdapter cardViewAdapter = new CardViewAdapter();
-    @SuppressLint("StaticFieldLeak")
-    public static FloatingActionButton addBtn;
-    public static boolean status = false;
-    public static MenuItem item;
+    private FloatingActionButton addBtn;
+    private boolean status = false;
+    public MenuItem item;
+    private List<Info> sortedList = new ArrayList<>();
 
     public MainFragment() {
     }
@@ -63,39 +71,66 @@ public class MainFragment extends Fragment {
     public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_to_do_main, menu);
         item = menu.findItem(R.id.menu_edit);
+        if(status) {
+            item.setIcon(R.drawable.ic_accept);
+        }
         super.onCreateOptionsMenu(menu, inflater);
     }
 
-    @SuppressLint("RestrictedApi")
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
         switch (item.getItemId()) {
             case R.id.menu_edit:
-                if(item.getTitle().equals("edit")) {
+                if(status && item.getTitle().equals(MENU_TITLE_EDIT)){
+                    item.setIcon(R.drawable.ic_pencil);
+                    status = false;
+                    addBtn.show();
+                }
+                else if(item.getTitle().equals(MENU_TITLE_EDIT)) {
                     item.setIcon(R.drawable.ic_accept);
-                    item.setTitle("accept");
-                    addBtn.setVisibility(View.INVISIBLE);
+                    item.setTitle(MENU_TITLE_ACCEPT);
+                    addBtn.hide();
                     status = true;
                 }
-                else if(item.getTitle().equals("accept")){
+                else if(item.getTitle().equals(MENU_TITLE_ACCEPT)){
                     item.setIcon(R.drawable.ic_pencil);
-                    item.setTitle("edit");
-                    addBtn.setVisibility(View.VISIBLE);
+                    item.setTitle(MENU_TITLE_EDIT);
+                    addBtn.show();
                     status = false;
                 }
-                return true;
-            case R.id.delete:
-                if(item.getTitle().equals("Delete")){
-                    item.setTitle("Choosing");
-                }
 
+                break;
+            case R.id.delete:
+                if(item.getTitle().equals("delete")){
+                    item.setIcon(R.drawable.ic_delete);
+                    break;
+
+                }
+                else if(item.getTitle().equals("accept")){
+
+                }
+                break;
+            case R.id.sort_Date:
+                sortedList = cardViewAdapter.getData();
+                sortedList = SortingTool.sort(sortedList, BY_DATE);
+                notifyAdapter();
+                break;
+            case R.id.sort_Title:
+                sortedList = cardViewAdapter.getData();
+                sortedList = SortingTool.sort(sortedList, BY_TITLE);
+                notifyAdapter();
+                break;
+            case R.id.sort_Priority:
+                sortedList = cardViewAdapter.getData();
+                sortedList = SortingTool.sort(sortedList, BY_PRIORITY);
+                notifyAdapter();
+                break;
             default:
-                item.setIcon(R.drawable.ic_pencil);
-                return super.onOptionsItemSelected(item);
+                break;
         }
+        return super.onOptionsItemSelected(item);
     }
 
-    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
@@ -112,13 +147,14 @@ public class MainFragment extends Fragment {
                     add();
                 }
             });
-        if (getArguments() != null) {
+        if(getArguments() != null) {
             if(!status) {
-                addBtn.setVisibility(View.VISIBLE);
+                addBtn.show();
             }
-            else if(status) {
-                addBtn.setVisibility(View.INVISIBLE);
+            else{
+                addBtn.hide();
             }
+
             Info info = getArguments().getParcelable(ARG_PARAM);
             String s = getArguments().getString(ARG_STRING);
             switch (s){
@@ -134,6 +170,7 @@ public class MainFragment extends Fragment {
         FragmentTransaction fragmentManager = getFragmentManager().beginTransaction();
         fragmentManager.replace(R.id.placeHolder, new FragmentView());
         fragmentManager.commit();
+        addBtn.hide();
     }
 
     public void edit(Info info){
@@ -143,4 +180,8 @@ public class MainFragment extends Fragment {
         fragmentManager.commit();
     }
 
+    public void notifyAdapter(){
+        cardViewAdapter.setData(sortedList);
+        cardViewAdapter.notifyDataSetChanged();
+    }
 }

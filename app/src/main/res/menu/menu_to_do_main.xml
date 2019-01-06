@@ -13,7 +13,7 @@
         android:id="@+id/delete"
         android:icon="@drawable/ic_remove"
         android:title="@string/Delete"
-        android:orderInCategory="2"
+        android:orderInCategory="1"
         app:showAsAction="always"/>
 
     <item

@@ -23,7 +23,6 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.apple.todoapp.R;
-import com.example.apple.todoapp.activity.MainActivity;
 import com.example.apple.todoapp.viewType.Info;
 import java.util.Calendar;
 
@@ -41,7 +40,7 @@ public class FragmentView extends Fragment {
     private int radioBtnSelect;
     private static String ARG_BUNDLE = "KEY";
     private static String s = "addBtn";
-    private static MainFragment mainFragment;
+    private  MainFragment mainFragment;
 
     public FragmentView(){
     }
@@ -56,8 +55,6 @@ public class FragmentView extends Fragment {
     @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
-        MainFragment.item.setVisible(false);
-        MainFragment.addBtn.setVisibility(View.INVISIBLE);
         title = view.findViewById(R.id.titleEdit);
         description = view.findViewById(R.id.descriptionEdit);
         dateTime = view.findViewById(R.id.editTime);
@@ -131,7 +128,7 @@ public class FragmentView extends Fragment {
         date = new DatePickerDialog(getContext(), new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int dayOfMonth) {
-                dateTime.setText(dayOfMonth + "/" + (month + 1) + "/" + year);
+                dateTime.setText(String.format("%02d/%02d/%02d",dayOfMonth, month + 1, year));
             }
         }, year, month, day);
         date.setOnCancelListener(new DialogInterface.OnCancelListener() {
@@ -157,7 +154,6 @@ public class FragmentView extends Fragment {
                     mainFragment = MainFragment.newInstance(info, s);
                     FragmentTransaction fragmentTransaction = getFragmentManager().beginTransaction();
                     fragmentTransaction.replace(R.id.placeHolder, mainFragment);
-                    MainFragment.item.setVisible(true);
                     fragmentTransaction.commit();
                 }
             }
