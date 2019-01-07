@@ -108,13 +108,15 @@ public class MainFragment extends Fragment {
 
                 break;
             case R.id.delete:
-                if(item.getTitle().equals("delete")){
+                if(item.getTitle().equals("delete")) {
                     item.setIcon(R.drawable.ic_accept);
-                    break;
-
+                    item.setTitle("remove");
+                    cardViewAdapter.setRemoveVisibility(true);
                 }
-                else if(item.getTitle().equals("accept")){
-
+                else if(item.getTitle().equals("remove")){
+                    item.setIcon(R.drawable.ic_delete);
+                    item.setTitle("delete");
+                    cardViewAdapter.setRemoveVisibility(false);
                 }
                 break;
             case R.id.sort_Date:

@@ -14,9 +14,7 @@ public class ToDoHolder extends RecyclerView.ViewHolder {
     private OnItemClickListener OnItemClickListener;
     private OnItemRemoveClickListener OnItemRemoveClickListener;
 
-    public TextView getTitle() {
-        return title;
-    }
+    public TextView getTitle() { return title; }
 
     public TextView getDescription() {
         return description;

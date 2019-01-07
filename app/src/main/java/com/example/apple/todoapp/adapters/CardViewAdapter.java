@@ -4,6 +4,7 @@ import android.graphics.Color;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
+import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.apple.todoapp.adapters.cardViewHolder.ToDoHolder;
@@ -18,6 +19,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     private List<Info> data = new ArrayList<>();
     private OnItemSelectedListener onItemSelected;
     private OnItemRemoveSelectedListener onItemRemoveSelectedListener;
+    private boolean removeVisibility;
 
     private ToDoHolder.OnItemClickListener OnItemClickListener =
             new ToDoHolder.OnItemClickListener() {
@@ -66,7 +68,17 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
             case "High": toDoHolder.getPriority().setBackgroundColor(Color.RED);
                 break;
         }
+        if(removeVisibility){
+            toDoHolder.getDelete().setVisibility(View.VISIBLE);
+        }
+        else{
+            toDoHolder.getDelete().setVisibility(View.INVISIBLE);
+        }
+    }
 
+    public void setRemoveVisibility(boolean removeVisibility) {
+        this.removeVisibility = removeVisibility;
+        notifyDataSetChanged();
     }
 
     public void setOnItemSelectedListener(OnItemSelectedListener onItemSelectedListener) {
