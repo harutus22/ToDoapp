@@ -1,13 +1,10 @@
 package com.example.apple.todoapp.adapters.cardViewHolder;
 
 import android.support.v7.widget.RecyclerView;
-import android.view.MenuItem;
 import android.view.View;
-import android.widget.AdapterView;
 import android.widget.TextView;
 
 import com.example.apple.todoapp.R;
-import com.example.apple.todoapp.activity.MainActivity;
 
 public class ToDoHolder extends RecyclerView.ViewHolder {
     private TextView title, description, date;

@@ -1,6 +1,5 @@
 package com.example.apple.todoapp.fragments;
 
-import android.annotation.SuppressLint;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
@@ -52,7 +51,6 @@ public class FragmentView extends Fragment {
         return view;
     }
 
-    @SuppressLint("RestrictedApi")
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         title = view.findViewById(R.id.titleEdit);
