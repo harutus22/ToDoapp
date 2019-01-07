@@ -17,6 +17,7 @@ import java.util.Objects;
 public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     private List<Info> data = new ArrayList<>();
     private OnItemSelectedListener onItemSelected;
+    private OnItemRemoveSelectedListener onItemRemoveSelectedListener;
 
     private ToDoHolder.OnItemClickListener OnItemClickListener =
             new ToDoHolder.OnItemClickListener() {
@@ -28,12 +29,22 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
                 }
             };
 
+    private ToDoHolder.OnItemRemoveClickListener OnItemRemoveClickListener = new ToDoHolder.OnItemRemoveClickListener() {
+        @Override
+        public void onItemClick(int adapterPosition) {
+            if(onItemRemoveSelectedListener != null){
+                onItemRemoveSelectedListener.onItemRemoveSelected(adapterPosition);
+            }
+        }
+    };
+
     @NonNull
     @Override
     public ToDoHolder onCreateViewHolder(@NonNull ViewGroup viewGroup, int i) {
         ToDoHolder toDoHolder = new ToDoHolder(LayoutInflater.from(viewGroup.getContext())
                 .inflate(R.layout.cardviewlayout, viewGroup, false));
         toDoHolder.setOnItemClickListener(OnItemClickListener);
+        toDoHolder.setOnItemRemoveClickListener(OnItemRemoveClickListener);
         return toDoHolder;
     }
 
@@ -55,6 +66,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
             case "High": toDoHolder.getPriority().setBackgroundColor(Color.RED);
                 break;
         }
+
     }
 
     public void setOnItemSelectedListener(OnItemSelectedListener onItemSelectedListener) {
@@ -63,6 +75,14 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
 
     public interface OnItemSelectedListener {
         void onItemSelected(Info info);
+    }
+
+    public interface OnItemRemoveSelectedListener{
+        void onItemRemoveSelected(int position);
+    }
+
+    public void setOnItemRemoveSelectedListener(OnItemRemoveSelectedListener onItemRemoveSelectedListener){
+        this.onItemRemoveSelectedListener = onItemRemoveSelectedListener;
     }
 
     @Override
@@ -81,6 +101,11 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     public void addData(Info item){
         data.add(item);
         notifyItemInserted(data.size() - 1);
+    }
+
+    public void removeData(int position){
+        data.remove(position);
+        notifyItemRemoved(position);
     }
 
     public void updateData(Info item){

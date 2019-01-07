@@ -2,6 +2,7 @@ package com.example.apple.todoapp.adapters.cardViewHolder;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.apple.todoapp.R;
@@ -9,7 +10,9 @@ import com.example.apple.todoapp.R;
 public class ToDoHolder extends RecyclerView.ViewHolder {
     private TextView title, description, date;
     private View priority;
+    private ImageView delete;
     private OnItemClickListener OnItemClickListener;
+    private OnItemRemoveClickListener OnItemRemoveClickListener;
 
     public TextView getTitle() {
         return title;
@@ -27,6 +30,7 @@ public class ToDoHolder extends RecyclerView.ViewHolder {
         return priority;
     }
 
+    public ImageView getDelete() { return delete; }
 
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
@@ -37,12 +41,23 @@ public class ToDoHolder extends RecyclerView.ViewHolder {
         }
     };
 
+    private View.OnClickListener getOnClickListener = new View.OnClickListener() {
+        @Override
+        public void onClick(View v) {
+            if(OnItemRemoveClickListener != null){
+                OnItemRemoveClickListener.onItemClick(getAdapterPosition());
+            }
+        }
+    };
+
     public ToDoHolder(View itemView) {
         super(itemView);
         title = itemView.findViewById(R.id.titleCardView);
         description = itemView.findViewById(R.id.descriptionCardView);
         date = itemView.findViewById(R.id.dateCardView);
         priority = itemView.findViewById(R.id.priorityCardView);
+        delete = itemView.findViewById(R.id.delete);
+        delete.setOnClickListener(getOnClickListener);
         itemView.setOnClickListener(mOnClickListener);
     }
 
@@ -50,7 +65,15 @@ public class ToDoHolder extends RecyclerView.ViewHolder {
         this.OnItemClickListener = onItemClickListener;
     }
 
+    public void setOnItemRemoveClickListener(OnItemRemoveClickListener onItemRemoveClickListener){
+        this.OnItemRemoveClickListener = onItemRemoveClickListener;
+    }
+
     public interface OnItemClickListener {
+        void onItemClick(int adapterPosition);
+    }
+
+    public interface OnItemRemoveClickListener{
         void onItemClick(int adapterPosition);
     }
 }

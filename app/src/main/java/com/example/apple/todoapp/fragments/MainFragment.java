@@ -35,6 +35,13 @@ public class MainFragment extends Fragment {
         }
     };
 
+    private CardViewAdapter.OnItemRemoveSelectedListener OnItemRemoveSelectedListener = new CardViewAdapter.OnItemRemoveSelectedListener() {
+        @Override
+        public void onItemRemoveSelected(int position) {
+            cardViewAdapter.removeData(position);
+        }
+    };
+
     public static final String ARG_PARAM = "param1";
     public static final String ARG_STRING = "string";
     public static final String BY_TITLE = "byTitle";
@@ -102,7 +109,7 @@ public class MainFragment extends Fragment {
                 break;
             case R.id.delete:
                 if(item.getTitle().equals("delete")){
-                    item.setIcon(R.drawable.ic_delete);
+                    item.setIcon(R.drawable.ic_accept);
                     break;
 
                 }
@@ -135,6 +142,7 @@ public class MainFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         setHasOptionsMenu(true);
         cardViewAdapter.setOnItemSelectedListener(OnItemSelectedListener);
+        cardViewAdapter.setOnItemRemoveSelectedListener(OnItemRemoveSelectedListener);
         recyclerView = view.findViewById(R.id.toDoInfo);
         recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
         recyclerView.setHasFixedSize(true);

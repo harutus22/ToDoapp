@@ -9,6 +9,7 @@ public class Info implements Parcelable {
     private Random randomizer = new Random();
     private String id = String.valueOf(randomizer.nextInt());
 
+
     public Info(){
     }
 
