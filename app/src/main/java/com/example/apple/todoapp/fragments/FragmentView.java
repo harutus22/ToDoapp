@@ -3,6 +3,7 @@ package com.example.apple.todoapp.fragments;
 import android.app.DatePickerDialog;
 import android.app.TimePickerDialog;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -207,7 +208,7 @@ public class FragmentView extends Fragment {
             priority = view.findViewById(R.id.priorityGroup);
             priorityBtnSelect = priority.getCheckedRadioButtonId();
             RadioButton btn = view.findViewById(priorityBtnSelect);
-            priorityBtnText = btn.getText().toString();
+            priorityBtnText = btn.getTag().toString();
         }
         catch (NullPointerException n){
 
@@ -218,6 +219,8 @@ public class FragmentView extends Fragment {
         title.setText(info.getTitle());
         description.setText(info.getDescription());
         dateTime.setText(info.getDate());
+        priority = view.findViewById(R.id.priorityGroup);
+        priority.check(view.findViewWithTag(info.getPriority()).getId());
         String k = info.getId();
         return k;
     }

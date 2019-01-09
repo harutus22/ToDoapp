@@ -57,15 +57,15 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
         toDoHolder.getDescription().setText(info.getDescription());
         toDoHolder.getDate().setText(info.getDate());
         switch (info.getPriority()){
-            case "Low": toDoHolder.getPriority().setBackgroundColor(Color.BLUE);
+            case "e": toDoHolder.getPriority().setBackgroundColor(Color.BLUE);
                 break;
-            case "Minor": toDoHolder.getPriority().setBackgroundColor(Color.CYAN);
+            case "d": toDoHolder.getPriority().setBackgroundColor(Color.CYAN);
                 break;
-            case "Normal": toDoHolder.getPriority().setBackgroundColor(Color.GREEN);
+            case "c": toDoHolder.getPriority().setBackgroundColor(Color.GREEN);
                 break;
-            case "Major": toDoHolder.getPriority().setBackgroundColor(Color.YELLOW);
+            case "b": toDoHolder.getPriority().setBackgroundColor(Color.YELLOW);
                 break;
-            case "High": toDoHolder.getPriority().setBackgroundColor(Color.RED);
+            case "a": toDoHolder.getPriority().setBackgroundColor(Color.RED);
                 break;
         }
         if(removeVisibility){

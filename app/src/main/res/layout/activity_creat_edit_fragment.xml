@@ -30,6 +30,8 @@
         <android.support.design.widget.TextInputEditText
             android:id="@+id/titleEdit"
             android:maxLines="1"
+            android:hint="Push to enter the title"
+            android:imeOptions="actionDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:inputType="text"
@@ -72,6 +74,8 @@
             android:id="@+id/descriptionEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionDone"
+            android:hint="Push to enter the description"
             android:maxLines="3"
             />
     </android.support.design.widget.TextInputLayout>
@@ -90,6 +94,8 @@
         android:id="@+id/editTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:hint="Push to enter date and time"
+        android:imeOptions="actionDone"
         android:focusableInTouchMode="false"/>
 </android.support.design.widget.TextInputLayout>
 
@@ -172,7 +178,8 @@
         android:layout_weight="1"
         android:background="@color/Blue"
         android:buttonTint="@color/Black"
-        android:text="Low" />
+        android:text="Low"
+        android:tag="e"/>
 
     <RadioButton
         android:id="@+id/priorityMinor"
@@ -181,7 +188,8 @@
         android:layout_weight="1"
         android:background="@color/Light_Blue"
         android:buttonTint="@color/Black"
-        android:text="Minor" />
+        android:text="Minor"
+        android:tag="d"/>
 
     <RadioButton
         android:id="@+id/prorityNormal"
@@ -190,7 +198,8 @@
         android:layout_weight="1"
         android:background="@color/Green"
         android:buttonTint="@color/Black"
-        android:text="Normal" />
+        android:text="Normal"
+        android:tag="c"/>
 
     <RadioButton
         android:id="@+id/priorityMajor"
@@ -199,7 +208,8 @@
         android:layout_weight="1"
         android:background="@color/Orange"
         android:buttonTint="@color/Black"
-        android:text="Major" />
+        android:text="Major"
+        android:tag="b"/>
 
         <RadioButton
             android:id="@+id/priorityHigh"
@@ -208,7 +218,8 @@
             android:layout_weight="1"
             android:background="@color/Red"
             android:buttonTint="@color/Black"
-            android:text="High" />
+            android:text="High"
+            android:tag="a"/>
 
     </RadioGroup>
 
