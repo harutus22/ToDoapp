@@ -8,6 +8,8 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.apple.todoapp.adapters.cardViewHolder.ToDoHolder;
+import com.example.apple.todoapp.database.DBManager;
+import com.example.apple.todoapp.fragments.MainFragment;
 import com.example.apple.todoapp.viewType.Info;
 import com.example.apple.todoapp.R;
 
@@ -39,6 +41,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
             }
         }
     };
+
 
     @NonNull
     @Override
@@ -113,11 +116,13 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     public void addData(Info item){
         data.add(item);
         notifyItemInserted(data.size() - 1);
+        MainFragment.dbManager.createToDo(item);
     }
 
     public void removeData(int position){
         data.remove(position);
         notifyItemRemoved(position);
+        MainFragment.dbManager.remove(data.get(position).getId());
     }
 
     public void updateData(Info item){
@@ -127,6 +132,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
                 notifyItemChanged(i);
                 break;
             }
+            MainFragment.dbManager.update(item);
         }
     }
 }

@@ -19,6 +19,7 @@ import android.view.ViewGroup;
 import com.example.apple.todoapp.R;
 import com.example.apple.todoapp.Tools.SortingTool;
 import com.example.apple.todoapp.adapters.CardViewAdapter;
+import com.example.apple.todoapp.database.DBManager;
 import com.example.apple.todoapp.viewType.Info;
 
 import java.util.ArrayList;
@@ -57,8 +58,17 @@ public class MainFragment extends Fragment {
     private boolean status = false;
     public MenuItem item;
     private List<Info> sortedList = new ArrayList<>();
+    public static DBManager dbManager;
+
 
     public MainFragment() {
+    }
+
+    @Override
+    public void onStart() {
+        dbManager = new DBManager(getActivity());
+        cardViewAdapter.setData(dbManager.getToDo());
+        super.onStart();
     }
 
     public static MainFragment newInstance(Info info, String s) {

@@ -7,10 +7,4 @@
     tools:context=".activity.MainActivity"
     android:id="@+id/placeHolder">
 
-    <fragment
-        android:name="com.example.apple.todoapp.fragments.MainFragment"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:id="@+id/activity_main_fragment" />
-
 </android.support.constraint.ConstraintLayout>

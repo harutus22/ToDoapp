@@ -13,7 +13,7 @@ public class Info implements Parcelable {
     public Info(){
     }
 
-    protected Info(Parcel in) {
+    private Info(Parcel in) {
         title = in.readString();
         description = in.readString();
         date = in.readString();

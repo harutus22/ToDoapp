@@ -1,8 +1,11 @@
 package com.example.apple.todoapp.activity;
 
 import android.annotation.SuppressLint;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.support.v4.app.FragmentManager;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -13,9 +16,12 @@ import android.view.View;
 
 
 import com.example.apple.todoapp.R;
+import com.example.apple.todoapp.database.DBManager;
+import com.example.apple.todoapp.fragments.FragmentView;
 import com.example.apple.todoapp.fragments.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
+
 //    private CardViewAdapter cardViewAdapter;
 //    private final int REQUEST_ADDITEM = 8;
 //    private final int REQUEST_EDIT = 6;
@@ -31,6 +37,12 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        FragmentTransaction fragmentManager = getSupportFragmentManager().beginTransaction();
+        MainFragment mainFragment = new MainFragment();
+        fragmentManager.replace(R.id.placeHolder, mainFragment);
+        fragmentManager.commit();
+
+
 //
 //        cardViewAdapter = new CardViewAdapter();
 //        cardViewAdapter.setOnItemSelectedListener(OnItemSelectedListener);
