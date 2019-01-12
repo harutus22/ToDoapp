@@ -23,7 +23,7 @@ public class SortingTool {
         }
     };
 
-//TODO remade priority sorting method
+//TODO remade date sorting method
 
     private static final Comparator<Info> byPriority = new Comparator<Info>() {
         @Override

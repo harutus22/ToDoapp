@@ -6,8 +6,8 @@ import java.util.Random;
 
 public class Info implements Parcelable {
     private String title, description, date, priority;
-    private Random randomizer = new Random();
-    private String id = String.valueOf(randomizer.nextInt());
+    private Random random = new Random();
+    private String id = String.valueOf(random.nextInt());
 
 
     public Info(){

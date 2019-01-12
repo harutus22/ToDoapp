@@ -31,6 +31,7 @@
             android:id="@+id/titleEdit"
             android:maxLines="1"
             android:hint="Push to enter the title"
+            android:textSize="25dp"
             android:imeOptions="actionDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -75,6 +76,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
+            android:textSize="25dp"
             android:hint="Push to enter the description"
             android:maxLines="3"
             />
@@ -96,6 +98,7 @@
         android:layout_height="wrap_content"
         android:hint="Push to enter date and time"
         android:imeOptions="actionDone"
+        android:textSize="25dp"
         android:focusableInTouchMode="false"/>
 </android.support.design.widget.TextInputLayout>
 

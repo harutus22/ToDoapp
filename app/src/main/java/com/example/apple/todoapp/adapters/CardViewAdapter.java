@@ -8,7 +8,6 @@ import android.view.View;
 import android.view.ViewGroup;
 
 import com.example.apple.todoapp.adapters.cardViewHolder.ToDoHolder;
-import com.example.apple.todoapp.database.DBManager;
 import com.example.apple.todoapp.fragments.MainFragment;
 import com.example.apple.todoapp.viewType.Info;
 import com.example.apple.todoapp.R;
