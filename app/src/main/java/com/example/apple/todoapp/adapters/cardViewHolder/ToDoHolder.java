@@ -30,6 +30,7 @@ public class ToDoHolder extends RecyclerView.ViewHolder {
 
     public ImageView getDelete() { return delete; }
 
+
     private View.OnClickListener mOnClickListener = new View.OnClickListener() {
         @Override
         public void onClick(View v) {

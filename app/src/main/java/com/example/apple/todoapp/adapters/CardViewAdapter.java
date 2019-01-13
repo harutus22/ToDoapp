@@ -36,7 +36,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
         @Override
         public void onItemClick(int adapterPosition) {
             if(onItemRemoveSelectedListener != null){
-                onItemRemoveSelectedListener.onItemRemoveSelected(adapterPosition);
+                onItemRemoveSelectedListener.onItemRemoveSelected(data.get(adapterPosition));
             }
         }
     };
@@ -92,7 +92,7 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     }
 
     public interface OnItemRemoveSelectedListener{
-        void onItemRemoveSelected(int position);
+        void onItemRemoveSelected(Info info);
     }
 
     public void setOnItemRemoveSelectedListener(OnItemRemoveSelectedListener onItemRemoveSelectedListener){
@@ -118,10 +118,10 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
         MainFragment.dbManager.createToDo(item);
     }
 
-    public void removeData(int position){
-        data.remove(position);
-        notifyItemRemoved(position);
-        MainFragment.dbManager.remove(data.get(position).getId());
+    public void removeData(Info info){
+        data.remove(info);
+        notifyDataSetChanged();
+        MainFragment.dbManager.remove(info.getId());
     }
 
     public void updateData(Info item){

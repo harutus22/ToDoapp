@@ -38,8 +38,8 @@ public class MainFragment extends Fragment {
 
     private CardViewAdapter.OnItemRemoveSelectedListener OnItemRemoveSelectedListener = new CardViewAdapter.OnItemRemoveSelectedListener() {
         @Override
-        public void onItemRemoveSelected(int position) {
-            cardViewAdapter.removeData(position);
+        public void onItemRemoveSelected(Info info) {
+            cardViewAdapter.removeData(info);
         }
     };
 
