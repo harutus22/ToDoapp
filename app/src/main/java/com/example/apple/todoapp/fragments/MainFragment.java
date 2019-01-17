@@ -1,6 +1,5 @@
 package com.example.apple.todoapp.fragments;
 
-import android.annotation.SuppressLint;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -18,6 +17,7 @@ import android.view.ViewGroup;
 
 import com.example.apple.todoapp.R;
 import com.example.apple.todoapp.Tools.SortingTool;
+import com.example.apple.todoapp.activity.MainActivity;
 import com.example.apple.todoapp.adapters.CardViewAdapter;
 import com.example.apple.todoapp.database.DBManager;
 import com.example.apple.todoapp.viewType.Info;
@@ -50,10 +50,8 @@ public class MainFragment extends Fragment {
     public static final String BY_PRIORITY = "byPriority";
     public static final String MENU_TITLE_EDIT = "edit";
     public static final String MENU_TITLE_ACCEPT = "accept";
-    @SuppressLint("StaticFieldLeak")
-    public static MainFragment fragment = new MainFragment();
     public RecyclerView recyclerView;
-    private CardViewAdapter cardViewAdapter = new CardViewAdapter();
+    private CardViewAdapter cardViewAdapter = MainActivity.cardViewAdapter;
     private FloatingActionButton addBtn;
     private boolean status = false;
     public MenuItem item;
@@ -72,6 +70,7 @@ public class MainFragment extends Fragment {
     }
 
     public static MainFragment newInstance(Info info, String s) {
+        MainFragment fragment = new MainFragment();
         Bundle args = new Bundle();
         args.putString(ARG_STRING, s);
         args.putParcelable(ARG_PARAM, info);

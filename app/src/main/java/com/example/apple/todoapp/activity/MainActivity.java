@@ -16,12 +16,14 @@ import android.view.View;
 
 
 import com.example.apple.todoapp.R;
+import com.example.apple.todoapp.adapters.CardViewAdapter;
 import com.example.apple.todoapp.database.DBManager;
 import com.example.apple.todoapp.fragments.FragmentView;
 import com.example.apple.todoapp.fragments.MainFragment;
 
 public class MainActivity extends AppCompatActivity {
 
+    public static CardViewAdapter cardViewAdapter = new CardViewAdapter();
 //    private CardViewAdapter cardViewAdapter;
 //    private final int REQUEST_ADDITEM = 8;
 //    private final int REQUEST_EDIT = 6;
@@ -41,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         MainFragment mainFragment = new MainFragment();
         fragmentManager.replace(R.id.placeHolder, mainFragment);
         fragmentManager.commit();
+
 
 
 //
