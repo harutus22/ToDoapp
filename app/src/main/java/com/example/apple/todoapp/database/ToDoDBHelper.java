@@ -9,7 +9,7 @@ public class ToDoDBHelper extends SQLiteOpenHelper {
     private static final String DB_NAME= "ToDoDataBase";
     private static final int DB_VERSION = 1;
 
-    public ToDoDBHelper(Context context) {
+    ToDoDBHelper(Context context) {
         super(context, DB_NAME, null, DB_VERSION);
     }
 

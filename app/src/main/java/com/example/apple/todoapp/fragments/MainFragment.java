@@ -120,11 +120,13 @@ public class MainFragment extends Fragment {
                 if(item.getTitle().equals("delete")) {
                     item.setIcon(R.drawable.ic_accept);
                     item.setTitle("remove");
+                    addBtn.hide();
                     cardViewAdapter.setRemoveVisibility(true);
                 }
                 else if(item.getTitle().equals("remove")){
                     item.setIcon(R.drawable.ic_delete);
                     item.setTitle("delete");
+                    addBtn.show();
                     cardViewAdapter.setRemoveVisibility(false);
                 }
                 break;
@@ -144,7 +146,6 @@ public class MainFragment extends Fragment {
                 notifyAdapter();
                 break;
             default:
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
