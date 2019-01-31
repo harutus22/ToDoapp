@@ -3,15 +3,12 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    android:elevation="10dp"
-    app:cardElevation="10dp"
+    app:cardElevation="@dimen/card_elevation"
     app:cardUseCompatPadding="true"
-    app:contentPadding="10dp"
-    app:cardBackgroundColor="#95A5A6"
-    app:cardCornerRadius="10dp"
-    xmlns:tools="http://schemas.android.com/tools"
-    app:contentPaddingLeft="10dp"
-    app:contentPaddingRight="10dp">
+    app:contentPadding="@dimen/card_padding"
+    app:cardBackgroundColor="@color/cardViewBackColor"
+    app:cardCornerRadius="@dimen/card_corner_radius"
+    xmlns:tools="http://schemas.android.com/tools">
 
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -27,7 +24,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textSize="20dp"
+            android:textSize="@dimen/card_text_size"
             android:textStyle="bold"/>
         <TextView
             android:id="@+id/descriptionCardView"
@@ -35,7 +32,7 @@
             android:layout_height="wrap_content"
             android:maxLines="1"
             android:ellipsize="end"
-            android:textSize="20dp"
+            android:textSize="@dimen/card_text_size"
             app:layout_constraintTop_toBottomOf="@id/titleCardView"/>
         <TextView
             android:id="@+id/dateCardView"
@@ -43,14 +40,14 @@
             android:layout_height="wrap_content"
             android:ellipsize="end"
             android:maxLines="1"
-            android:textSize="20dp"
+            android:textSize="@dimen/card_text_size"
             app:layout_constraintTop_toBottomOf="@id/descriptionCardView"/>
 
         <TextView
             android:id="@+id/priorityCardView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:textSize="20dp"
+            android:textSize="@dimen/card_text_size"
             app:layout_constraintTop_toBottomOf="@id/dateCardView"
             />
 
@@ -61,7 +58,7 @@
             app:srcCompat="@drawable/ic_remove"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            android:layout_marginEnd="5dp"
+            android:layout_marginEnd="@dimen/delete_margin_end"
             android:visibility="visible"/>
 
 </android.support.constraint.ConstraintLayout>

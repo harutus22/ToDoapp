@@ -1,3 +1,17 @@
 <resources>
     <dimen name="fab_margin">16dp</dimen>
+    <dimen name = "hint_text_size"> 25sp</dimen>
+    <dimen name = "title_size"> 20sp</dimen>
+    <dimen name = "margin_start"> 10dp</dimen>
+    <dimen name = "margin_star_high"> 25dp</dimen>
+    <dimen name = "margin_top_low"> 10dp</dimen>
+    <dimen name = "margin_top_normal"> 20dp</dimen>
+    <dimen name = "margin_end"> 10dp</dimen>
+    <dimen name = "float_btn_merge_end"> 10dp</dimen>
+    <dimen name = "float_btn_merge_bottom"> 15dp</dimen>
+    <dimen name = "card_text_size"> 20sp</dimen>
+    <dimen name="card_elevation"> 10dp</dimen>
+    <dimen name="card_padding"> 10dp</dimen>
+    <dimen name="card_corner_radius"> 10dp</dimen>
+    <dimen name="delete_margin_end"> 5dp</dimen>
 </resources>

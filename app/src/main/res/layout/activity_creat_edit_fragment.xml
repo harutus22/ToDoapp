@@ -11,11 +11,11 @@
         android:id="@+id/save"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Save"
+        android:text="@string/save"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        android:layout_marginEnd="10dp"
-        android:layout_marginTop="10dp"/>
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_start"/>
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/titleWrapper"
@@ -24,43 +24,43 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/title_view"
-        android:layout_marginEnd="10dp"
-        android:layout_marginStart="10dp">
+        android:layout_marginEnd="@dimen/margin_end"
+        android:layout_marginStart="@dimen/margin_start">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/titleEdit"
             android:maxLines="1"
-            android:hint="Push to enter the title"
-            android:textSize="25dp"
+            android:hint="@string/title_input_hint"
+            android:textSize="@dimen/hint_text_size"
             android:imeOptions="actionDone"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="text"
-            />
+            android:inputType="text" />
+
     </android.support.design.widget.TextInputLayout>
 
     <TextView
         android:id="@+id/title_view"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textSize="20dp"
-        android:text="Title"
+        android:textSize="@dimen/title_size"
+        android:text="@string/title"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/save"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="10dp" />
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginTop="@dimen/margin_top_low" />
 
     <TextView
         android:id="@+id/descriptionView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Description"
-        android:textSize="20dp"
+        android:text="@string/description"
+        android:textSize="@dimen/title_size"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/titleWrapper"
         android:maxLines="1"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginTop="@dimen/margin_top_normal" />
 
     <android.support.design.widget.TextInputLayout
         android:id="@+id/descriptionWrapper"
@@ -68,16 +68,16 @@
         android:layout_height="wrap_content"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/descriptionView"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end">
 
         <android.support.design.widget.TextInputEditText
             android:id="@+id/descriptionEdit"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:imeOptions="actionDone"
-            android:textSize="25dp"
-            android:hint="Push to enter the description"
+            android:textSize="@dimen/hint_text_size"
+            android:hint="@string/description_input_hint"
             android:maxLines="3"
             />
     </android.support.design.widget.TextInputLayout>
@@ -89,16 +89,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/dateView"
         android:inputType="datetime"
-        android:layout_marginStart="10dp"
-        android:layout_marginEnd="10dp">
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginEnd="@dimen/margin_end">
 
     <android.support.design.widget.TextInputEditText
         android:id="@+id/editTime"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:hint="Push to enter date and time"
+        android:hint="@string/input_date_hint"
         android:imeOptions="actionDone"
-        android:textSize="25dp"
+        android:textSize="@dimen/hint_text_size"
         android:focusableInTouchMode="false"/>
 </android.support.design.widget.TextInputLayout>
 
@@ -106,35 +106,35 @@
         android:id="@+id/dateView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Date and Time"
+        android:text="@string/date_and_time"
         app:layout_constraintTop_toBottomOf="@id/descriptionWrapper"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="20dp"
-        android:layout_marginStart="10dp"
-        android:textSize="20dp" />
+        android:layout_marginTop="@dimen/margin_top_normal"
+        android:layout_marginStart="@dimen/margin_start"
+        android:textSize="@dimen/title_size" />
 
     <CheckBox
         android:id="@+id/repeatView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Repeat"
+        android:text="@string/repeatCheckbox"
         app:layout_constraintTop_toBottomOf="@id/editTimeWrapper"
         app:layout_constraintStart_toStartOf="parent"
         android:checked="false"
-        android:layout_marginStart="10dp"
-        android:layout_marginTop="20dp" />
+        android:layout_marginStart="@dimen/margin_start"
+        android:layout_marginTop="@dimen/margin_top_normal" />
 
     <TextView
         android:id="@+id/priorityView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="10dp"
-        android:text="Priority"
-        android:textSize="20dp"
-        android:layout_marginTop="10dp"
+        android:layout_marginStart="@dimen/margin_start"
+        android:text="@string/Priority"
+        android:textSize="@dimen/title_size"
+        android:layout_marginTop="@dimen/margin_top_low"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/repeatViewGroup"
-        tools:layout_editor_absoluteY="441dp" />
+        />
 
     <RadioGroup
         android:id="@+id/repeatViewGroup"
@@ -143,33 +143,33 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/repeatView"
         android:buttonTint="@color/Black"
-        android:layout_marginStart="25dp"
+        android:layout_marginStart="@dimen/margin_star_high"
         android:visibility="gone">
 
         <RadioButton
             android:id="@+id/dailyBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Daily" />
+            android:text="@string/radioButtonDaily" />
 
         <RadioButton
             android:id="@+id/weeklyBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Weekly" />
+            android:text="@string/radioButtonWeekly" />
 
         <RadioButton
             android:id="@+id/monthlyBtn"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="Monthly" />
+            android:text="@string/radioButtonMonthly" />
     </RadioGroup>
 
     <RadioGroup
         android:id="@+id/priorityGroup"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="@dimen/margin_top_low"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/priorityView"
         android:orientation="horizontal">
@@ -181,8 +181,8 @@
         android:layout_weight="1"
         android:background="@color/Blue"
         android:buttonTint="@color/Black"
-        android:text="Low"
-        android:tag="e"/>
+        android:text="@string/priorityLow"
+        android:tag="@string/tag_low"/>
 
     <RadioButton
         android:id="@+id/priorityMinor"
@@ -191,18 +191,18 @@
         android:layout_weight="1"
         android:background="@color/Light_Blue"
         android:buttonTint="@color/Black"
-        android:text="Minor"
-        android:tag="d"/>
+        android:text="@string/priorityMinor"
+        android:tag="@string/tag_minor"/>
 
     <RadioButton
-        android:id="@+id/prorityNormal"
+        android:id="@+id/priorityNormal"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
         android:background="@color/Green"
         android:buttonTint="@color/Black"
-        android:text="Normal"
-        android:tag="c"/>
+        android:text="@string/priorityNormal"
+        android:tag="@string/tag_normal"/>
 
     <RadioButton
         android:id="@+id/priorityMajor"
@@ -211,8 +211,8 @@
         android:layout_weight="1"
         android:background="@color/Orange"
         android:buttonTint="@color/Black"
-        android:text="Major"
-        android:tag="b"/>
+        android:text="@string/priorityMajor"
+        android:tag="@string/tag_major"/>
 
         <RadioButton
             android:id="@+id/priorityHigh"
@@ -221,8 +221,8 @@
             android:layout_weight="1"
             android:background="@color/Red"
             android:buttonTint="@color/Black"
-            android:text="High"
-            android:tag="a"/>
+            android:text="@string/priorityHigh"
+            android:tag="@string/tag_high"/>
 
     </RadioGroup>
 

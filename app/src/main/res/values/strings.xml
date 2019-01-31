@@ -10,4 +10,26 @@
     <string name="sort_date">sortDate</string>
     <string name="sort_priority">sort_priority</string>
     <string name="Delete">delete</string>
+    <string name="radioButtonDaily">Daily</string>
+    <string name="radioButtonWeekly">Weekly</string>
+    <string name="radioButtonMonthly">Monthly</string>
+    <string name="priorityLow">Low</string>
+    <string name="priorityMinor">Minor</string>
+    <string name="priorityNormal">Normal</string>
+    <string name="priorityMajor">Major</string>
+    <string name="priorityHigh">High</string>
+    <string name="Priority">Priority</string>
+    <string name="repeatCheckbox">Repeat</string>
+    <string name="date_and_time">Date and Time</string>
+    <string name="input_date_hint">Push to enter date and time</string>
+    <string name="description_input_hint">Push to enter the description</string>
+    <string name="description">Description</string>
+    <string name="title">Title</string>
+    <string name="title_input_hint">Push to enter the title</string>
+    <string name="save">Save</string>
+    <string name="tag_low">e</string>
+    <string name="tag_minor">d</string>
+    <string name="tag_normal">c</string>
+    <string name="tag_major">b</string>
+    <string name="tag_high">a</string>
 </resources>

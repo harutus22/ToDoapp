@@ -9,4 +9,5 @@
     <color name="Orange">#ffbd33</color>
     <color name="Red">#dc0505</color>
     <color name="Black">#030303</color>
+    <color name="cardViewBackColor">#95A5A6</color>
 </resources>
