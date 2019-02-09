@@ -1,12 +1,21 @@
 package com.example.apple.todoapp.viewType;
 
+import android.arch.persistence.room.Entity;
+import android.arch.persistence.room.Ignore;
+import android.arch.persistence.room.PrimaryKey;
 import android.os.Parcel;
 import android.os.Parcelable;
+import android.support.annotation.NonNull;
+
 import java.util.Random;
 
+@Entity(tableName = "todo")
 public class Info implements Parcelable {
     private String title, description, date, priority;
+    @Ignore
     private Random random = new Random();
+    @PrimaryKey
+    @NonNull
     private String id = String.valueOf(random.nextInt());
 
 
