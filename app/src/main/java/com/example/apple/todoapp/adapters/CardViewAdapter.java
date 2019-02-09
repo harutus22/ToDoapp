@@ -22,6 +22,9 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     private OnItemSelectedListener onItemSelected;
     private OnItemRemoveSelectedListener onItemRemoveSelectedListener;
     private boolean removeVisibility;
+    private final String ADD = "add";
+    private final String UPDATE = "update";
+    private final String REMOVE = "remove";
 
     private ToDoHolder.OnItemClickListener OnItemClickListener =
             new ToDoHolder.OnItemClickListener() {
@@ -116,13 +119,18 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
     public void addData(Info item){
         data.add(item);
         notifyItemInserted(data.size() - 1);
-        MainFragment.dbManager.createToDo(item);
+//        MainFragment.dbManager.createToDo(item);
+        database(ADD, item);
+
+
     }
 
     public void removeData(Info info){
         data.remove(info);
         notifyDataSetChanged();
-        MainFragment.dbManager.remove(info.getId());
+//        MainFragment.dbManager.remove(info.getId());
+        database(REMOVE, info);
+
     }
 
     public void updateData(Info item){
@@ -132,7 +140,24 @@ public class CardViewAdapter extends RecyclerView.Adapter<ToDoHolder> {
                 notifyItemChanged(i);
                 break;
             }
-            MainFragment.dbManager.update(item);
+//            MainFragment.dbManager.update(item);
+            database(UPDATE, item);
         }
+    }
+
+    private void database(final String word, final Info item){
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                switch (word){
+                    case ADD: MainFragment.toDoDao.insert(item);
+                    break;
+                    case REMOVE: MainFragment.toDoDao.delete(item);
+                    break;
+                    case UPDATE: MainFragment.toDoDao.update(item);
+                    break;
+                }
+            }
+        }).start();
     }
 }
