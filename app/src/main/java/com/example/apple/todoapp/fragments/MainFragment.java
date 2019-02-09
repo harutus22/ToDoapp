@@ -1,5 +1,6 @@
 package com.example.apple.todoapp.fragments;
 
+import android.arch.persistence.room.Room;
 import android.support.v4.app.FragmentTransaction;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
@@ -20,6 +21,8 @@ import com.example.apple.todoapp.Tools.SortingTool;
 import com.example.apple.todoapp.activity.MainActivity;
 import com.example.apple.todoapp.adapters.CardViewAdapter;
 import com.example.apple.todoapp.database.DBManager;
+import com.example.apple.todoapp.database.RoomDatabase;
+import com.example.apple.todoapp.database.dao.ToDoDao;
 import com.example.apple.todoapp.viewType.Info;
 
 import java.util.ArrayList;
@@ -57,6 +60,8 @@ public class MainFragment extends Fragment {
     public MenuItem item;
     private List<Info> sortedList = new ArrayList<>();
     public static DBManager dbManager;
+    public static RoomDatabase roomDatabase;
+    public static ToDoDao toDoDao;
 
 
     public MainFragment() {
@@ -64,8 +69,16 @@ public class MainFragment extends Fragment {
 
     @Override
     public void onStart() {
-        dbManager = new DBManager(getActivity());
-        cardViewAdapter.setData(dbManager.getToDo());
+//        dbManager = new DBManager(getActivity());
+        roomDatabase = Room.databaseBuilder(getContext(), RoomDatabase.class, "todo").build();
+        toDoDao = roomDatabase.toDoDao();
+//        cardViewAdapter.setData(dbManager.getToDo());
+        new Thread(new Runnable() {
+            @Override
+            public void run() {
+                cardViewAdapter.setData(toDoDao.findAll());
+            }
+        }).start();
         super.onStart();
     }
 
